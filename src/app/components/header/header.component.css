@@ -1,0 +1,20 @@
+nav {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background-color: #1B263B;
+}
+
+nav a {
+    color: #FFD700;
+}
+
+nav a:hover {
+    color: #1B263B;
+    background-color: #FFD700;
+}
+
+.navbar-toggler{
+    background-color: #FFD700;
+    border: none;
+}

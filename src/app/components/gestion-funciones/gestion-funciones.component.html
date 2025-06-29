@@ -1,0 +1,94 @@
+<div class="form-container">
+  <h2>Dar de Alta Nueva Función</h2>
+
+  <div class="mode-selector mb-3">
+    <button type="button" class="btn"
+      [ngClass]="{'btn-primary': isSingleFunctionMode, 'btn-secondary': !isSingleFunctionMode}"
+      (click)="toggleFunctionMode(true)">
+      Agregar Función Única
+    </button>
+    <button type="button" class="btn ms-2"
+      [ngClass]="{'btn-primary': !isSingleFunctionMode, 'btn-secondary': isSingleFunctionMode}"
+      (click)="toggleFunctionMode(false)">
+      Agregar Funciones Semanales
+    </button>
+  </div>
+
+  <form #funcionForm="ngForm">
+    <div class="form-group">
+      <label for="pelicula">Película:</label>
+      <select id="pelicula" name="pelicula" [(ngModel)]="nuevaFuncion.pelicula" required>
+        <option [ngValue]="null" disabled>Selecciona una película</option>
+        <option *ngFor="let pelicula of peliculas" [ngValue]="pelicula._id">{{ pelicula.originalTitle }}</option>
+      </select>
+      <div
+        *ngIf="funcionForm.controls['pelicula']?.invalid && (funcionForm.controls['pelicula']?.dirty || funcionForm.controls['pelicula']?.touched)"
+        class="error-message">
+        La película es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="hora">Hora:</label>
+      <select id="hora" name="hora" [(ngModel)]="nuevaFuncion.hora" required>
+        <option [ngValue]="null" disabled>Selecciona una hora</option>
+        <option *ngFor="let hora of horariosDisponibles" [ngValue]="hora">{{ hora }}</option>
+      </select>
+      <div
+        *ngIf="funcionForm.controls['hora']?.invalid && (funcionForm.controls['hora']?.dirty || funcionForm.controls['hora']?.touched)"
+        class="error-message">
+        La hora es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sala">Sala:</label>
+      <select id="sala" name="sala" [(ngModel)]="nuevaFuncion.sala" required>
+        <option [ngValue]="null" disabled>Selecciona una sala</option>
+        <option *ngFor="let sala of salasDisponibles" [ngValue]="sala">{{ sala }}</option>
+      </select>
+      <div
+        *ngIf="funcionForm.controls['sala']?.invalid && (funcionForm.controls['sala']?.dirty || funcionForm.controls['sala']?.touched)"
+        class="error-message">
+        La sala es obligatoria.
+      </div>
+    </div>
+
+    <div *ngIf="isSingleFunctionMode; else weeklyDates">
+      <div class="form-group">
+        <label for="singleDate">Fecha de la Función:</label>
+        <input type="date" id="singleDate" name="singleDate" [(ngModel)]="selectedSingleDate" required>
+        <div *ngIf="!selectedSingleDate && (funcionForm.submitted || funcionForm.controls['singleDate']?.touched)"
+          class="error-message">
+          La fecha de la función es obligatoria.
+        </div>
+      </div>
+    </div>
+
+    <ng-template #weeklyDates>
+      <div class="form-group">
+        <label for="startDate">Fecha de Inicio:</label>
+        <input type="date" id="startDate" name="startDate" [(ngModel)]="selectedStartDate" required>
+        <div *ngIf="!selectedStartDate && (funcionForm.submitted || funcionForm.controls['startDate']?.touched)"
+          class="error-message">
+          La fecha de inicio es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">Fecha de Fin:</label>
+        <input type="date" id="endDate" name="endDate" [(ngModel)]="selectedEndDate" required>
+        <div *ngIf="!selectedEndDate && (funcionForm.submitted || funcionForm.controls['endDate']?.touched)"
+          class="error-message">
+          La fecha de fin es obligatoria.
+        </div>
+      </div>
+    </ng-template>
+
+    <button type="button"
+      [disabled]="!funcionForm.form.valid || (isSingleFunctionMode && !selectedSingleDate) || (!isSingleFunctionMode && (!selectedStartDate || !selectedEndDate))"
+      (click)="crearFuncion()">
+      Crear Función(es)
+    </button>
+  </form>
+</div>

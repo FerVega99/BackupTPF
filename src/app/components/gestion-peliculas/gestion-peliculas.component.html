@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <button (click)="obtenerPeliculas()">Obtener Películas</button>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div *ngIf="peliculas.length > 0">
+                <h3>Lista de Películas</h3>
+                <ul>
+                    <li *ngFor="let pelicula of peliculas">
+                        {{ pelicula.originalTitle }} ({{ pelicula.releaseDate }}) <button
+                            (click)="agregarPelicula(pelicula)">Agregar</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Películas Agregadas</h3>
+            <ul>
+                <li *ngFor="let pelicula of peliculasAgregadas">
+                    {{ pelicula.originalTitle }} ({{ pelicula.releaseDate }}) <button (click)="eliminarPelicula(pelicula)">Eliminar</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

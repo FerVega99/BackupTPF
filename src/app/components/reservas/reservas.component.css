@@ -1,0 +1,188 @@
+.container-fluid {
+    padding: 20px;
+    color: #f0f0f0;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+}
+
+h2 {
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.function-details {
+    background-color: #444;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #555;
+}
+
+.function-details h3 {
+    color: #8cffc7;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.function-details p {
+    font-size: 1.1em;
+    margin: 5px 0;
+    color: #ccc;
+}
+
+.screen-container {
+    background-color: #2c2c2c;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.screen {
+    background-color: #555;
+    color: white;
+    width: 85%;
+    margin: 0 auto 35px auto;
+    padding: 15px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.4em;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.seats-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 12px;
+    justify-content: center;
+    margin: 0 auto 40px auto;
+    padding: 0 10px;
+}
+
+.seat {
+    min-width: 40px;
+    height: 50px;
+    background-color: #e74c3c;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.25s ease-in-out;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    border: 2px solid transparent;
+}
+
+.seat:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+.seat.available {
+    background-color: #2ecc71; /* Verde brillante */
+    cursor: pointer;
+    border-color: #1a924b; /* Borde más oscuro */
+}
+
+.seat.available:hover {
+    transform: translateY(-3px);
+}
+
+.seat.selected {
+    background-color: #3498db; /* Azul */
+    border-color: #2980b9; /* Borde más oscuro */
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.8); /* Sombra azul */
+}
+
+.seat.occupied {
+    background-color: #e74c3c; /* Rojo para ocupadas */
+    cursor: not-allowed;
+    opacity: 0.8; /* Ligeramente más opaco para que destaque */
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.5);
+    border-color: #c0392b; /* Borde rojo más oscuro */
+    transform: none;
+}
+
+.seat.occupied:hover {
+    transform: none;
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.legend {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espacio entre los elementos de la leyenda */
+    margin-bottom: 40px;
+    font-size: 1em;
+    color: #e0e0e0;
+}
+
+.seat-sample {
+    width: 25px; /* Define el ancho de la muestra de color */
+    height: 25px; /* Define el alto de la muestra de color */
+    border-radius: 6px; /* Bordes redondeados para la muestra */
+    display: inline-block; /* Crucial para que width/height funcionen y el background sea visible */
+    vertical-align: middle; /* Alinea verticalmente con el texto */
+    margin-right: 8px; /* Espacio entre la muestra y el texto */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+/* Colores específicos para cada estado en la leyenda */
+.seat-sample.available { 
+    background-color: #2ecc71; /* Verde para Disponible */
+}
+
+.seat-sample.selected { 
+    background-color: #3498db; /* Azul para Seleccionada */
+}
+
+.seat-sample.occupied { 
+    background-color: #e74c3c; /* Rojo para Ocupada */
+}
+
+/* Botón de reservar */
+#reserveButton {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    /* Gradiente */
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#reserveButton:hover {
+    background: linear-gradient(145deg, #2980b9, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#reserveButton:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}

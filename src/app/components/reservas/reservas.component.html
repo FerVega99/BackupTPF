@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <h2>Selección de Butacas</h2>
+
+  <div *ngIf="funcionSeleccionada && funcionSeleccionada.pelicula" class="function-details">
+    <h3>{{ funcionSeleccionada.pelicula.originalTitle }}</h3>
+    <p><strong>Fecha:</strong> {{ funcionSeleccionada.fecha | date:'dd/MM/yyyy' }}</p>
+    <p><strong>Hora:</strong> {{ funcionSeleccionada.hora }} | <strong>Sala:</strong> {{ funcionSeleccionada.sala }}</p>
+    <p><strong>Precio por Butaca:</strong> ${{ funcionSeleccionada.precio }}</p>
+  </div>
+
+  <div class="screen-container">
+    <div class="screen">PANTALLA</div>
+
+    <div class="seats-grid">
+      <div *ngFor="let seat of butacas" class="seat" [ngClass]="{
+                  'available': seat.status === 'available',
+                  'selected': seat.status === 'selected',
+                  'occupied': seat.status === 'occupied'
+              }" (click)="handleSeatClick(seat)"> {{ seat.id }}
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="seat-sample available"></span> Disponible
+      <span class="seat-sample selected"></span> Seleccionada
+      <span class="seat-sample occupied"></span> Ocupada
+    </div>
+
+    <button id="reserveButton" (click)="reservarButacas()" [disabled]="butacaSeleccionada.size === 0 || !selectedDate">
+      Reservar Butacas ({{ butacaSeleccionada.size }})
+    </button>
+    <button id="reserveButton" (click)="pagarReserva()" [disabled]="butacaSeleccionada.size === 0 || !selectedDate">
+      Pagar Reserva
+    </button>
+  </div>
+</div>

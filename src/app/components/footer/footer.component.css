@@ -1,0 +1,17 @@
+footer {
+  background-color: #1B263B;
+}
+
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+footer a {
+  color: #FFD60A;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

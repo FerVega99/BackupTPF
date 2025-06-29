@@ -1,0 +1,223 @@
+.card {
+    border: 1px solid #FFD700;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #1B263B;
+    color: #FFD700;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.custom-horizontal-card {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.custom-horizontal-card .card-img-custom {
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0;
+}
+
+.custom-horizontal-card .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-title {
+    color: #FFD700;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.card-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+}
+
+.fecha h4,
+.horarios h4,
+.salas h4,
+.precio h4 {
+    font-size: 1.0rem;
+    margin-bottom: 0.2rem;
+    color: #FFD700;
+    font-weight: 600;
+}
+
+button {
+    color: #1B263B;
+    border-color: #FFD700;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    background-color: #FFD700;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #1B263B;
+    color: #FFD700;
+    transform: translateY(-1px);
+    border: #FFD700 solid 1px;
+}
+
+.no-peliculas-msg {
+    color: #FFD700;
+    font-size: 1.1rem;
+    padding: 3rem;
+    background-color: #1B263B;
+    border: 1px solid #FFD700;
+    border-radius: 0.5rem;
+    margin-top: 3rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.peliculas-horizontal-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    align-items: stretch;
+    scroll-behavior: smooth;
+    gap: 1rem;
+}
+
+.peliculas-horizontal-scroll>.col {
+    flex: 0 0 auto;
+    width: 300px;
+    padding: 0;
+}
+
+.peliculas-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.peliculas-horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@media (max-width: 991px) {
+    .peliculas-horizontal-scroll>.col {
+        width: 280px;
+    }
+
+    .custom-horizontal-card {
+        height: 220px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .fecha h4,
+    .horarios h4,
+    .salas h4,
+    .precio h4 {
+        font-size: 0.95rem;
+    }
+
+    button {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .seccion-peliculas h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .seccion-peliculas h2 {
+        font-size: 2rem;
+    }
+
+    .peliculas-horizontal-scroll>.col {
+        width: 250px;
+    }
+
+    .custom-horizontal-card {
+        height: 200px;
+    }
+
+    .card-img-custom {
+        object-position: center;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .fecha h4,
+    .horarios h4,
+    .salas h4,
+    .precio h4 {
+        font-size: 0.85rem;
+    }
+
+    button {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .peliculas-horizontal-scroll>.col {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .custom-horizontal-card {
+        height: 180px;
+    }
+
+    .card-img-custom {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.7rem;
+        -webkit-line-clamp: 2;
+    }
+
+    .fecha h4,
+    .horarios h4,
+    .salas h4,
+    .precio h4 {
+        font-size: 0.75rem;
+    }
+
+    button {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .seccion-peliculas h2 {
+        font-size: 1.8rem;
+    }
+}
